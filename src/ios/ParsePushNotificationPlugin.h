@@ -14,6 +14,7 @@
     }
     
     @property (nonatomic, copy) NSString *callbackId;
+    @property (nonatomic) id currentUser;
 
 
     
