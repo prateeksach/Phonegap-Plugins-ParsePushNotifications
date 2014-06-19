@@ -1,11 +1,11 @@
 	var exec = require('cordova/exec');
     var pluginNativeName = "ParsePushNotificationPlugin";
                
-    var ParsePushPlugin = function () {
+    var ParsePushNotificationPlugin = function () {
     };
 
                
-    ParsePushPlugin.prototype = {
+    ParsePushNotificationPlugin.prototype = {
     	
 		register : function(options, successCallback, errorCallback) {
            
@@ -36,6 +36,6 @@
     };
 	
                
-    module.exports = new ParsePushPlugin();
+    module.exports = new ParsePushNotificationPlugin();
 
 
