@@ -144,10 +144,8 @@
     
 #if !TARGET_IPHONE_SIMULATOR
     
-    NSLog(@"User id = %@", self.currentUserId);
-
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-    [currentInstallation setObject:[PFObject objectWithoutDataWithClassName:@"User" objectId:self.currentUserId] forKey:@"user"];
+    [currentInstallation setObject:[PFObject objectWithoutDataWithClassName:@"_User" objectId:self.currentUserId] forKey:@"user"];
     [currentInstallation setDeviceTokenFromData:deviceToken];
     [currentInstallation saveInBackground];
     [self successWithMessage:[NSString stringWithFormat:@"%@", token]];
