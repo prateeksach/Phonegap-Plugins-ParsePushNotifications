@@ -76,6 +76,8 @@
         
         NSString *appId = [options objectForKey:@"appId"];
         NSString *clientKey = [options objectForKey:@"clientKey"];
+
+        self.currentUserId = [options objectForKey:@"userId"];
         
         [Parse setApplicationId:appId clientKey:clientKey];
         
@@ -142,7 +144,10 @@
     
 #if !TARGET_IPHONE_SIMULATOR
     
+    NSLog(@"User id = %@", self.currentUserId);
+
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setObject:[PFObject objectWithoutDataWithClassName:@"User" objectId:self.currentUserId] forKey:@"user"];
     [currentInstallation setDeviceTokenFromData:deviceToken];
     [currentInstallation saveInBackground];
     [self successWithMessage:[NSString stringWithFormat:@"%@", token]];
