@@ -147,7 +147,8 @@
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setObject:[PFObject objectWithoutDataWithClassName:@"_User" objectId:self.currentUserId] forKey:@"user"];
     [currentInstallation setDeviceTokenFromData:deviceToken];
-    [currentInstallation saveInBackground];
+    if(self.currentUserId)
+        [currentInstallation saveInBackground];
     [self successWithMessage:[NSString stringWithFormat:@"%@", token]];
 #endif
 }
