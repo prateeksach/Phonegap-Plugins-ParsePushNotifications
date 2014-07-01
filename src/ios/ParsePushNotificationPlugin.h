@@ -29,6 +29,4 @@
 - (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
 - (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
     
--(void)didReceiveRemoteNotificationWithPayload:(NSDictionary *)payload;
-    
 @end

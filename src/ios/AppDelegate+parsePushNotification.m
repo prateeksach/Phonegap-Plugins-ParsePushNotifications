@@ -28,20 +28,6 @@
     [pushHandler didFailToRegisterForRemoteNotificationsWithError:error];
 }
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)payload
-{
-    
-    NSLog(@"didReceiveRemoteNotification");
-    UIApplicationState appstate = [[UIApplication sharedApplication] applicationState];
-    
-    
-    NSMutableDictionary *extendedPayload = [payload mutableCopy];
-    [extendedPayload setObject:[NSNumber numberWithBool:(appstate == UIApplicationStateActive)] forKey:@"receivedInForeground"];
-    
-    ParsePushNotificationPlugin *pushHandler = [self getCommandInstance:@"ParsePushNotificationPlugin"];
-    [pushHandler didReceiveRemoteNotificationWithPayload:extendedPayload];
-}
-
 - (id) getCommandInstance:(NSString*)className
 {
     return [self.viewController getCommandInstance:className];
