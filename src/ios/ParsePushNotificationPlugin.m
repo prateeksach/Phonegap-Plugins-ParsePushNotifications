@@ -186,7 +186,6 @@
         
         if(coldstartNotification)
         {
-            [self didReceiveRemoteNotificationWithPayload:coldstartNotification];
             coldstartNotification = nil;
         }
     }
