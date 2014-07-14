@@ -14,7 +14,8 @@
     }
     
     @property (nonatomic, copy) NSString *callbackId;
-    @property (nonatomic) NSString* currentUserId;
+    @property (nonatomic) NSString* businessId;
+    @property (nonatomic) NSString* customerId;
 
 
     

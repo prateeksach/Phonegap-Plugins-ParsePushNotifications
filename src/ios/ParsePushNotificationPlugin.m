@@ -77,7 +77,8 @@
         NSString *appId = [options objectForKey:@"appId"];
         NSString *clientKey = [options objectForKey:@"clientKey"];
 
-        self.currentUserId = [options objectForKey:@"userId"];
+        self.businessId = [options objectForKey:@"businessId"];
+        self.customerId = [options objectForKey:@"customerId"];
         
         [Parse setApplicationId:appId clientKey:clientKey];
         
@@ -143,12 +144,15 @@
     [results setValue:token forKey:@"deviceToken"];
     
 #if !TARGET_IPHONE_SIMULATOR
-    
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-    [currentInstallation setObject:[PFObject objectWithoutDataWithClassName:@"_User" objectId:self.currentUserId] forKey:@"user"];
+    
+    if(self.businessId)
+        [currentInstallation setObject:[PFObject objectWithoutDataWithClassName:@"Business" objectId:self.businessId] forKey:@"business"];
+    else if(self.customerId)
+        [currentInstallation setObject:[PFObject objectWithoutDataWithClassName:@"Business" objectId:self.customerId] forKey:@"customer"];
+
     [currentInstallation setDeviceTokenFromData:deviceToken];
-    if(self.currentUserId)
-        [currentInstallation saveInBackground];
+    [currentInstallation saveInBackground];
     [self successWithMessage:[NSString stringWithFormat:@"%@", token]];
 #endif
 }
