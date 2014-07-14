@@ -149,7 +149,7 @@
     if(self.businessId)
         [currentInstallation setObject:[PFObject objectWithoutDataWithClassName:@"Business" objectId:self.businessId] forKey:@"business"];
     else if(self.customerId)
-        [currentInstallation setObject:[PFObject objectWithoutDataWithClassName:@"Business" objectId:self.customerId] forKey:@"customer"];
+        [currentInstallation setObject:[PFObject objectWithoutDataWithClassName:@"Customer" objectId:self.customerId] forKey:@"customer"];
 
     [currentInstallation setDeviceTokenFromData:deviceToken];
     [currentInstallation saveInBackground];
